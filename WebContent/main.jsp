@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<jsp:useBean id="list" class="bean.ShowListBean" scope="session" />
+<jsp:useBean id="plan" class="bean.ShowListBean" scope="session" />
 <jsp:useBean id="user" class="bean.Userbean" scope="session" />
 <html>
 
@@ -11,14 +13,13 @@
     <script type="text/javascript" src="js/my_script_style.js"></script>
     <title>读书信息管理系统</title>
 </head>
-
 <body id="main">
     <div>
         <header class="header">
             <h1 class="header-logo">
                 过去一切时代的精华尽在书中。
             </h1>
-            <h2></h2>>
+            <h2></h2>
             <ul class="header-menu">
                 <li><a class="a-menu" onclick="toggle('plan')">我的读书计划</a></li>
                 <li><a class="a-menu" onclick="toggle('list')">我的书单</a></li>
@@ -27,9 +28,11 @@
         </header>
         <div id="home">
             <div class="lead">
-                <h2>欢迎来到你的私人书籍管理系统</h2></br>
+                <h2>欢迎来到你的私人书籍管理系统,<jsp:getProperty name="user" property="userName" /></h2></br>
                 <h2>书籍是人类进步的阶梯</h2>
                 <h2>列出你的欲读清单，写下你的读书计划，从点滴开始</h2>
+                <a href="modifyList.jsp">添加书单</a>
+                <a href="modifyList.jsp">添加读书计划</a>
             </div>
             <div class="content">
                 <h3>《小王子》选段</h3></br>
@@ -74,6 +77,7 @@
                         <th>类别</th>
                         <th>状态</th>
                     </tr>
+                    <jsp:getProperty name="list" property="presentPageResult"/>
                 </table>
             </div>
         </div>
@@ -85,10 +89,11 @@
                 <table>
                     <tr>
                         <th>序号</th>
-                        <th>书名</th>
                         <th>时间</th>
+                        <th>书名</th>
                         <th>进度</th>
                     </tr>
+                    <jsp:getProperty name="plan" property="presentPageResult"/>
                 </table>
             </div>
         </div>

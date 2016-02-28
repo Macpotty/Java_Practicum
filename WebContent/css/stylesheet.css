@@ -2,7 +2,7 @@
 * @Author: michael
 * @Date:   2016-02-27 20:42:15
 * @Last Modified by:   michael
-* @Last Modified time: 2016-02-28 15:59:50
+* @Last Modified time: 2016-02-29 01:32:00
 */
 
 * {
@@ -125,10 +125,16 @@ form {
 
 .typ li {
     width: auto;
-    height: auto;
+    height: 80px;
     display: block;
     color: #4D4949;
     margin-bottom: 10px;
+}
+
+.typ p {
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 3px;
 }
 
 .typ input[type=submit] {
@@ -165,9 +171,15 @@ input[type=submit]:hover {
     display: block;
     width: 70%;
     height: 100%;
+    min-height: 750px;
     z-index: 9;
     background-color: #202020;
     opacity: 0.85;
+}
+
+.lead {
+    padding: 0.7em 1em 0.7em 1em;
+    margin-bottom: 50px;
 }
 
 .lead h2 {
@@ -176,8 +188,10 @@ input[type=submit]:hover {
     color: #FFFFFF;
 }
 
-.lead {
-    margin-bottom: 60px;
+.lead a {
+    display: block;
+    float: right;
+    margin-right: 20%;
 }
 
 .content h3 {
@@ -189,17 +203,41 @@ input[type=submit]:hover {
 .content {
     font-size: 20px;
     color: #FFFFFF;
+    margin: auto;
+    width: 85%
 }
 
-.content table {
-    width: 100%;
 }
+
+.content table tr {
+    width: 100%;
+    min-width: 1000px;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+}
+.content table th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+.content table td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+}
+
 
 #list {
     margin: auto;
     display: block;
     width: 70%;
     height: 100%;
+    min-height: 750px;
     z-index: 9;
     background-color: #202020;
     opacity: 0.85;
@@ -210,7 +248,23 @@ input[type=submit]:hover {
     display: block;
     width: 70%;
     height: 100%;
+    min-height: 750px;
     z-index: 9;
     background-color: #202020;
     opacity: 0.85;
+}
+
+#addItem {
+    margin: auto;
+    display: block;
+    width: 70%;
+    height: 100%;
+    min-height: 750px;
+    z-index: 9;
+    background-color: #202020;
+    opacity: 0.85;
+}
+
+#addItem p {
+    color: #FFFFFF;
 }

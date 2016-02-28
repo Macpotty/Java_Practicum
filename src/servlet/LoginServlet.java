@@ -1,9 +1,13 @@
 package servlet;
 
 import bean.Userbean;
-import bean.CheckUser;
+import bean.CtlSql;
+
 import javax.servlet.RequestDispatcher;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,11 +58,26 @@ public class LoginServlet extends HttpServlet {
 		}
 		user.setUserName(userName);
 		user.setUserPassword(userPassword);
-		CheckUser chk = new CheckUser();
-		boolean valid = chk.checkUser(user);
+	    ResultSet rs=null;  
+	    CtlSql db=new CtlSql();  
+		boolean valid = false;
+		String sql = "select * from user where user_name='"+
+		user.getUserName()+"' and password='"+user.gerUserPassword()+"'";
+		db.con();
+		rs = db.qurey(sql);
+		try {
+			if(rs.next()) {
+				valid = true;
+				int userID = Integer.parseInt(rs.getString(1));
+				user.setUserID(userID);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		if(valid) {
 			showInfo = "登录成功！";
-			forward = "main.jsp";
+			forward = "myList";
 			user.setShowInfo(showInfo);
 			user.setLoginState(true);
 		}

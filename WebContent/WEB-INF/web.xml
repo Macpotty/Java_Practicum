@@ -31,14 +31,22 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>register</servlet-name>
-    <url-pattern>/register</url-pattern>
+    <url-pattern>/Register</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>modify</servlet-name>
+    <servlet-name>modifyList</servlet-name>
     <servlet-class>servlet.ModifyListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>modify</servlet-name>
-    <url-pattern>/addItem</url-pattern>
+    <servlet-name>modifyList</servlet-name>
+    <url-pattern>/AddList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>modifyPlan</servlet-name>
+    <servlet-class>servlet.ModifyPlanServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modifyPlan</servlet-name>
+    <url-pattern>/AddPlan</url-pattern>
   </servlet-mapping>
 </web-app>

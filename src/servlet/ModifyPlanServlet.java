@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.CtlSql;
-import bean.ListInfoBean;
+import bean.PlanInfoBean;
 import bean.Userbean;
 
 /**
- * Servlet implementation class ModifyListServlet
+ * Servlet implementation class ModifyPlanServlet
  */
-@WebServlet("/ModifyListServlet")
-public class ModifyListServlet extends HttpServlet {
+@WebServlet("/ModifyPlanServlet")
+public class ModifyPlanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModifyListServlet() {
+    public ModifyPlanServlet() {
         super();
     }
 
@@ -41,11 +41,10 @@ public class ModifyListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bookName = request.getParameter("bookName");
-		String bookAuthor = request.getParameter("bookAuthor");
-		String bookClass = request.getParameter("bookClass");
+		String startTime = request.getParameter("startTime");
 		String status = request.getParameter("status");
 		HttpSession session = request.getSession(true);		//创建session对象
-		ListInfoBean list = new ListInfoBean();
+		PlanInfoBean plan = new PlanInfoBean();
 		Userbean user = (Userbean)session.getAttribute("user");
 		int userID = user.getUserID();
 		String showInfo = "";
@@ -53,21 +52,20 @@ public class ModifyListServlet extends HttpServlet {
 		
 		try{
 			CtlSql db = new CtlSql();
-			String sql = "INSERT INTO list(book_name,book_author,book_class,status,user_id) VALUES('"+bookName+"','"+bookAuthor+"','"+bookClass+"','"+status+"','"+userID+"')";
+			String sql = "INSERT INTO plan(book_name,plan_time,status,user_id) VALUES('"+bookName+"','"+startTime+"','"+status+"','"+userID+"')";
 			db.update(sql);
 			showInfo = "添加成功！";
 			forward = "main.jsp";
-			list.setShowInfo(showInfo);
-			list.setBookName(bookName);
-			list.setBookAuthor(bookAuthor);
-			list.setBookType(bookClass);
-			list.setStatus(status);
-			list.setUserID(userID);
+			plan.setShowInfo(showInfo);
+			plan.setBookName(bookName);
+			plan.setStartTime(startTime);
+			plan.setStatus(status);
+			plan.setUserID(userID);
 			db.con().close();
 		} catch(SQLException e) {
 			showInfo = "添加失败:(";
-			forward = "modifyList.jsp";
-			list.setShowInfo(showInfo);
+			forward = "modifyPlan.jsp";
+			user.setShowInfo(showInfo);
 			e.printStackTrace();
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(forward);

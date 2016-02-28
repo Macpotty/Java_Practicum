@@ -29,25 +29,21 @@
         </header>
         <div id="addItem">
             <div class="lead">
-                <h2>添加新的欲读书目</h2></br>
+                <h2>添加新的读书计划</h2></br>
             </div>
-            <form name="addItem" action="ModifyListServlet" method="post">
+            <form name="addItem" action="ModifyPlanServlet" method="post">
                 <ul class="typ">
                     <li>
                         <p>书名:</p>
                         <input type="text" name="bookName" placeholder="我想看哪本书呢..." required>
                     </li>
                     <li>
-                        <p>作者:</p>
-                        <input type="text" name="bookAuthor" placeholder="作者是..." >
+                        <p>开始时间:</p>
+                        <input type="text" name="startTime" placeholder="今夕何夕？" >
                     </li>
                     <li>
-                        <p>类别:</p>
-                        <input type="text" name="bookClass" placeholder="什么类别呢？" >
-                    </li>
-                    <li>
-                        <p>状态:</p>
-                        <input type="text" name="status" placeholder="我看过了吗？" required>
+                        <p>进度:</p>
+                        <input type="text" name="status" placeholder="看到哪里了呀？" required>
                     </li>
                     <input type="submit" onClick="myFunction()" value="提交">
                 </ul>
