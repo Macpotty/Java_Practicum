@@ -10,7 +10,6 @@ public class ShowListBean {
 	protected StringBuffer presentPageResult;
 	protected String databaseName = "booklist";
 	protected String tableName = "";
-	protected StringBuffer formTitle = null;
 	
 	public void setRowSet(CachedRowSetImpl set){
 		rowSet = set;
@@ -53,11 +52,5 @@ public class ShowListBean {
 	}
 	public String getTableName(){
 		return tableName;
-	}
-	public void setFormTitle(StringBuffer title){
-		formTitle = title;
-	}
-	public StringBuffer getFormTitle(){
-		return formTitle;
 	}
 }

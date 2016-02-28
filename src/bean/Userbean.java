@@ -1,12 +1,17 @@
 package bean;
 
 public class Userbean {
-	public String userName;
-	public String userPassword;
-	public String userEmail = null;
-	public String showInfo = null;
-	public Userbean() {
-	
+	private int userID;
+	private String userName;
+	private String userPassword;
+	private String userEmail = null;
+	private String showInfo = null;
+	private boolean loginState;
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+	public int getUserID() {
+		return userID;
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
@@ -31,5 +36,11 @@ public class Userbean {
 	}
 	public String getShowInfo() {
 		return showInfo;
+	}
+	public void setLoginState(boolean loginState) {
+		this.loginState = loginState;
+	}
+	public boolean getLoginState() {
+		return loginState;
 	}
 }

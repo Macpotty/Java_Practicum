@@ -58,9 +58,9 @@ public class RegisterServlet extends HttpServlet {
 		try{
 			CtlSql db = new CtlSql();
 			if(legal){
-				String sql = "INSERT INTO user VALUES("+userName+","+userPasswd+","+userEmail+")";
+				String sql = "INSERT INTO user(user_name,password,user_Email) VALUES('"+userName+"','"+userPasswd+"','"+userEmail+"')";
 				db.update(sql);
-				forward = "succeed.jsp";
+				forward = "index.jsp";
 				user.setUserName(userName);
 				user.setUserPassword(userPasswd);
 				user.setUserEmail(userEmail);
@@ -75,6 +75,7 @@ public class RegisterServlet extends HttpServlet {
 			showInfo = "此用户名已被使用，请更改。";
 			forward = "failed";
 			user.setShowInfo(showInfo);
+			e.printStackTrace();
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);

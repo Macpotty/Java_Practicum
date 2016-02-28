@@ -11,7 +11,7 @@ public class CtlSql {
 	public static final String userName = "root";
 	public static final String userPassword = "960627Xc!";
 	public static final String DriverName = "com.mysql.jdbc.Driver";
-	public static final String URL = "jdbc:mysql://localhost:3306/bookcook?useUnicode=true&characterEncoding=gb2312";
+	public static final String URL = "jdbc:mysql://localhost:3306/booklist?useUnicode=true&characterEncoding=gb2312";
 	public Connection con() {
 		Connection con = null;
 		try {
@@ -36,7 +36,7 @@ public class CtlSql {
 	public void update(String sql) throws SQLException {
 		try {
 			Statement stmt = this.con().createStatement();
-			stmt.executeQuery(sql);
+			stmt.execute(sql);
 		} catch (SQLException e) {
 			throw e;
 		}
