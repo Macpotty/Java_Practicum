@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<jsp:useBean id="user" class="bean.Userbean" scope="session" />
 <html>
 
 <head>
@@ -17,6 +18,7 @@
             <h1 class="header-logo">
                 过去一切时代的精华尽在书中。
             </h1>
+            <h2></h2>>
             <ul class="header-menu">
                 <li><a class="a-menu" onclick="toggle('plan')">我的读书计划</a></li>
                 <li><a class="a-menu" onclick="toggle('list')">我的书单</a></li>
@@ -77,7 +79,7 @@
         </div>
         <div id="plan">
             <div class="lead">
-                <h2>我的书单</h2></br>
+                <h2>我的读书计划</h2></br>
             </div>
             <div class="content">
                 <table>
