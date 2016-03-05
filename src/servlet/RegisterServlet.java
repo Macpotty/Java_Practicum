@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -37,11 +38,23 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String userName = request.getParameter("userName");
 		String userPasswd = request.getParameter("Password");
 		String userEmail = request.getParameter("E-mail");
-		Userbean user = new Userbean();
-		request.setAttribute("Register", user);
+		String realName = request.getParameter("realName");
+		Userbean user = null;
+		HttpSession session = request.getSession(true);
+		try {
+			user = (Userbean)session.getAttribute("user");
+			if(user == null) {
+				user = new Userbean();
+				session.setAttribute("user", user);
+			}
+		} catch(Exception e) {
+			user = new Userbean();
+			session.setAttribute("user", user);
+		}
 		boolean isChar = true;
 		for(int i = 0;i < userName.length();i++){
 			char c = userName.charAt(i);
@@ -55,22 +68,23 @@ public class RegisterServlet extends HttpServlet {
 		try{
 			CtlSql db = new CtlSql();
 			if(legal){
-				String sql = "INSERT INTO user(user_name,password,user_Email) VALUES('"+userName+"','"+userPasswd+"','"+userEmail+"')";
+				String sql = "INSERT INTO user(user_name,password,user_Email,real_name) VALUES('"+userName+"','"+userPasswd+"','"+userEmail+"','"+realName+"')";
 				db.update(sql);
-				forward = "index.jsp";
+				forward = "MyList";
 				user.setUserName(userName);
 				user.setUserPassword(userPasswd);
 				user.setUserEmail(userEmail);
+				user.setRealName(realName);
 			}
 			else{
-				showInfo = "注册失败！";
-				forward = "failed.jsp";
+				showInfo = "用户名中有非法字符，注册失败！";
+				forward = "register.jsp";
 				user.setShowInfo(showInfo);
 			}
 			db.con().close();
 		} catch(SQLException e) {
 			showInfo = "此用户名已被使用，请更改。";
-			forward = "failed";
+			forward = "register.jsp";
 			user.setShowInfo(showInfo);
 			e.printStackTrace();
 		}

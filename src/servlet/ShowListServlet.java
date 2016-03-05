@@ -47,6 +47,7 @@ public class ShowListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		StringBuffer presentPageResult = new StringBuffer();	//建立当前页字符串
 		ShowListBean listBean = null;		//创建显示bean
 		String showInfo;
@@ -62,98 +63,106 @@ public class ShowListServlet extends HttpServlet {
 		}
 		else {
 			int userID = user.getUserID();
-			String[] tableNames = {"plan", "list"};
-			if(request.getParameter("tableName") != null){
-				tableNames[0] = request.getParameter("tableName");
-				tableNames[1] = null;
-			}
-			for(String tableName:tableNames){
-				System.out.println(tableName);
-				if(tableName == null)continue;
-				CtlSql db = new CtlSql();		//创建工具类实例
-				Connection con;		//创建连接对象
-				try {		//此块用于初始化生命周期为session的bean对象
-					listBean = (ShowListBean)session.getAttribute(tableName);
-					if(listBean == null) {
-						listBean = new ShowListBean();
-						session.setAttribute(tableName, listBean);
-					}
-				} catch(Exception e) {
+			String tableName = "list";
+			CtlSql db = new CtlSql();		//创建工具类实例
+			Connection con;		//创建连接对象
+			try {		//此块用于初始化生命周期为session的bean对象
+				listBean = (ShowListBean)session.getAttribute(tableName);
+				if(listBean == null) {
 					listBean = new ShowListBean();
 					session.setAttribute(tableName, listBean);
 				}
-				String pageSizeGet = request.getParameter("pageSize");
-				if (pageSizeGet != null) {
-					try {
-						int size = Integer.parseInt(pageSizeGet);
-						listBean.setPageSize(size);
-					} catch(NumberFormatException e) {
-						listBean.setPageSize(5);
-					}
-				}
-				listBean.setPageSize(5);
-				int showPage = 1;
-				int pageSize = listBean.getPageSize();
-				boolean isLegal = tableName != null && tableName.length() > 0;
-				if(isLegal) {
-					listBean.setTableName(tableName);
-				}
+			} catch(Exception e) {
+				listBean = new ShowListBean();
+				session.setAttribute(tableName, listBean);
+			}
+			String pageSizeGet = request.getParameter("pageSize");
+			if (pageSizeGet != null) {
 				try {
-					con = db.con();
-					fieldCount = 0;
-					DatabaseMetaData metadata = con.getMetaData();
-					ResultSet rs1 = metadata.getColumns(null, null, tableName, null);
-					while(rs1.next())
-						fieldCount++;
-		
-					Statement sql = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-	
-					ResultSet rs = sql.executeQuery("SELECT * FROM "+tableName+" WHERE user_id='"+userID+"'");
-					rowSet = new CachedRowSetImpl();
-					rowSet.populate(rs);
-					con.close();
-					listBean.setRowSet(rowSet);
-					rowSet.last();
-					int row = rowSet.getRow();
-					int pageAllCount = ((row % pageSize) == 0) ? (row / pageSize) :(row / pageSize + 1);
-					listBean.setPageAllCount(pageAllCount);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				String PageOperation = request.getParameter("PageOperation");
-				if(PageOperation == null || PageOperation.length() == 0){
-					showPage = 1;
-					listBean.setShowPage(showPage);
-					CachedRowSetImpl rowSet = listBean.getRowSet();
-					if(rowSet != null){
-						presentPageResult = show(showPage, pageSize, rowSet);
-						listBean.setPresentPageResult(presentPageResult);
-					}
-				}
-				else if(PageOperation.equals("下一页")) {
-					showPage++;
-					if(showPage > listBean.getPageAllCount())
-						showPage = listBean.getPageAllCount();
-					listBean.setShowPage(showPage);
-					CachedRowSetImpl rowSet = listBean.getRowSet();
-					if(rowSet != null){
-						presentPageResult = show(showPage, pageSize, rowSet);
-						listBean.setPresentPageResult(presentPageResult);
-					}
-				}
-				else if(PageOperation.equals("上一页")) {
-					showPage--;
-					if(showPage < listBean.getPageAllCount())
-						showPage = 1;
-					listBean.setShowPage(showPage);
-					CachedRowSetImpl rowSet = listBean.getRowSet();
-					if(rowSet != null){
-						presentPageResult = show(showPage, pageSize, rowSet);
-						listBean.setPresentPageResult(presentPageResult);
-					}
+					int size = Integer.parseInt(pageSizeGet);
+					listBean.setPageSize(size);
+				} catch(NumberFormatException e) {
+					listBean.setPageSize(8);
 				}
 			}
-			forward = "main.jsp";
+			listBean.setPageSize(8);;
+			int showPage;
+			if(request.getParameter("showPage") == null){
+				showPage = 1;
+			}
+			else {
+				showPage = Integer.parseInt(request.getParameter("showPage"));
+				System.out.println(showPage);
+				if(showPage > listBean.getPageAllCount()) {
+					showPage = listBean.getPageAllCount();
+				}
+				if(showPage <= 0) {
+					showPage = 1;
+				}
+			}
+			listBean.setShowPage(showPage);
+			int pageSize = listBean.getPageSize();
+			boolean isLegal = tableName != null && tableName.length() > 0;
+			if(isLegal) {
+				listBean.setTableName(tableName);
+			}
+			try {
+				con = db.con();
+				fieldCount = 0;
+				DatabaseMetaData metadata = con.getMetaData();
+				ResultSet rs1 = metadata.getColumns(null, null, tableName, null);
+				while(rs1.next())
+					fieldCount++;
+
+				Statement sql = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+				ResultSet rs = sql.executeQuery("SELECT * FROM "+tableName+" WHERE user_id='"+userID+"'");
+				rowSet = new CachedRowSetImpl();
+				rowSet.populate(rs);
+				con.close();
+				listBean.setRowSet(rowSet);
+				rowSet.last();
+				int row = rowSet.getRow();
+				int pageAllCount = ((row % pageSize) == 0) ? (row / pageSize) :(row / pageSize + 1);
+				listBean.setPageAllCount(pageAllCount);
+				presentPageResult = show(showPage, pageSize, rowSet);
+				listBean.setPresentPageResult(presentPageResult);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+//			String PageOperation = request.getParameter("PageOperation");
+//			if(PageOperation == null || PageOperation.length() == 0){
+//				showPage = 1;
+//				listBean.setShowPage(showPage);
+//				CachedRowSetImpl rowSet = listBean.getRowSet();
+//				if(rowSet != null){
+//					presentPageResult = show(showPage, pageSize, rowSet);
+//					listBean.setPresentPageResult(presentPageResult);
+//				}
+//			}
+//			else if(PageOperation.equals("下一页")) {
+//				showPage++;
+//				if(showPage > listBean.getPageAllCount())
+//					showPage = listBean.getPageAllCount();
+//				listBean.setShowPage(showPage);
+//				CachedRowSetImpl rowSet = listBean.getRowSet();
+//				if(rowSet != null){
+//					presentPageResult = show(showPage, pageSize, rowSet);
+//					listBean.setPresentPageResult(presentPageResult);
+//				}
+//			}
+//			else if(PageOperation.equals("上一页")) {
+//				showPage--;
+//				if(showPage < listBean.getPageAllCount())
+//					showPage = 1;
+//				listBean.setShowPage(showPage);
+//				CachedRowSetImpl rowSet = listBean.getRowSet();
+//				if(rowSet != null){
+//					presentPageResult = show(showPage, pageSize, rowSet);
+//					listBean.setPresentPageResult(presentPageResult);
+//				}
+//			}
+			forward = "list.jsp";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
@@ -163,16 +172,18 @@ public class ShowListServlet extends HttpServlet {
 		try {
 			rowSet.absolute((page - 1) * pageSize + 1);
 			for(int i = 1; i <= pageSize; i++) {
-				str.append("<tr>");
-				for(int j = 1; j <= fieldCount; j++){
+				str.append("<tbody>");
+				for(int j = 2; j <= fieldCount; j++){
 					if(j == 5 || j == 6)continue;
 					str.append("<td>"+rowSet.getString(j)+"</td>");
 				}
-				str.append("</tr>");
+				str.append("</tbody>");
 				rowSet.next();
 			}
-		} catch(SQLException e) {}
+		} catch(SQLException e) {
+		}
 		return str;
 	}
+
 
 }

@@ -6,6 +6,7 @@ public class PlanInfoBean {
 	private String startTime;
 	private String status;
 	private String showInfo;
+	private String thoughts;
 	private int userID;
 
 	public int getId() {
@@ -20,6 +21,12 @@ public class PlanInfoBean {
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
+    public String getThoughts() {
+        return thoughts;
+    }
+    public void setThoughts(String thoughts) {
+        this.thoughts = thoughts;
+    }
 	public String getStartTime() {
 		return startTime;
 	}

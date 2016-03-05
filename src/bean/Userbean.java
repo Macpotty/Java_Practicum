@@ -6,6 +6,7 @@ public class Userbean {
 	private String userPassword;
 	private String userEmail = null;
 	private String showInfo = null;
+	private String realName;
 	private boolean loginState;
 	public void setUserID(int userID) {
 		this.userID = userID;
@@ -36,6 +37,12 @@ public class Userbean {
 	}
 	public String getShowInfo() {
 		return showInfo;
+	}
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+	public String getRealName() {
+		return realName;
 	}
 	public void setLoginState(boolean loginState) {
 		this.loginState = loginState;

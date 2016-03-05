@@ -40,6 +40,7 @@ public class ModifyListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String bookName = request.getParameter("bookName");
 		String bookAuthor = request.getParameter("bookAuthor");
 		String bookClass = request.getParameter("bookClass");
@@ -56,7 +57,7 @@ public class ModifyListServlet extends HttpServlet {
 			String sql = "INSERT INTO list(book_name,book_author,book_class,status,user_id) VALUES('"+bookName+"','"+bookAuthor+"','"+bookClass+"','"+status+"','"+userID+"')";
 			db.update(sql);
 			showInfo = "添加成功！";
-			forward = "main.jsp";
+			forward = "MyList";
 			list.setShowInfo(showInfo);
 			list.setBookName(bookName);
 			list.setBookAuthor(bookAuthor);

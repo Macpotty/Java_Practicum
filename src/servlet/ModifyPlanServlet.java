@@ -40,9 +40,11 @@ public class ModifyPlanServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String bookName = request.getParameter("bookName");
 		String startTime = request.getParameter("startTime");
 		String status = request.getParameter("status");
+		String thoughts = request.getParameter("thoughts");
 		HttpSession session = request.getSession(true);		//创建session对象
 		PlanInfoBean plan = new PlanInfoBean();
 		Userbean user = (Userbean)session.getAttribute("user");
@@ -55,12 +57,13 @@ public class ModifyPlanServlet extends HttpServlet {
 			String sql = "INSERT INTO plan(book_name,plan_time,status,user_id) VALUES('"+bookName+"','"+startTime+"','"+status+"','"+userID+"')";
 			db.update(sql);
 			showInfo = "添加成功！";
-			forward = "main.jsp";
+			forward = "MyPlan";
 			plan.setShowInfo(showInfo);
 			plan.setBookName(bookName);
 			plan.setStartTime(startTime);
 			plan.setStatus(status);
 			plan.setUserID(userID);
+			plan.setThoughts(thoughts);
 			db.con().close();
 		} catch(SQLException e) {
 			showInfo = "添加失败:(";

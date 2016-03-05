@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String userName = request.getParameter("userName");
 		String userPassword = request.getParameter("Password");
 		String showInfo = "";
@@ -69,7 +70,11 @@ public class LoginServlet extends HttpServlet {
 			if(rs.next()) {
 				valid = true;
 				int userID = Integer.parseInt(rs.getString(1));
+				String userEmail = rs.getString(5);
+				String realName = rs.getString(3);
 				user.setUserID(userID);
+				user.setUserEmail(userEmail);
+				user.setRealName(realName);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(valid) {
 			showInfo = "登录成功！";
-			forward = "myList";
+			forward = "index-after.jsp";
 			user.setShowInfo(showInfo);
 			user.setLoginState(true);
 		}
