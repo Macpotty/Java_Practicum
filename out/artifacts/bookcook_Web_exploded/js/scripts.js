@@ -1,4 +1,4 @@
-function check() {
+function check1() {
     with(document.all) {
         if (input1.value != input2.value) {
             alert("两次输入密码不同")
@@ -8,6 +8,15 @@ function check() {
     }
 }
 
+function check2() {
+    with(document.all) {
+        if (input3.value != input4.value) {
+            alert("两次输入密码不同")
+            input3.value = "";
+            input4.value = "";
+        } else document.forms[0].submit();
+    }
+}
 var field1;
 var field2;
 var field3;
@@ -65,6 +74,5 @@ function get_lid(ida){
 function get_pid(ida){
     id = "#" + ida;
     field0 = $(id).children("div").eq(1).children("div").children("dl").children("dd").eq(3);
-    alert(field0.text());
     $(id+"i").val(field0.text());
 }

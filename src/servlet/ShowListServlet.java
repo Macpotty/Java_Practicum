@@ -156,61 +156,10 @@ public class ShowListServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-//			String PageOperation = request.getParameter("PageOperation");
-//			if(PageOperation == null || PageOperation.length() == 0){
-//				showPage = 1;
-//				listBean.setShowPage(showPage);
-//				CachedRowSetImpl rowSet = listBean.getRowSet();
-//				if(rowSet != null){
-//					presentPageResult = show(showPage, pageSize, rowSet);
-//					listBean.setPresentPageResult(presentPageResult);
-//				}
-//			}
-//			else if(PageOperation.equals("下一页")) {
-//				showPage++;
-//				if(showPage > listBean.getPageAllCount())
-//					showPage = listBean.getPageAllCount();
-//				listBean.setShowPage(showPage);
-//				CachedRowSetImpl rowSet = listBean.getRowSet();
-//				if(rowSet != null){
-//					presentPageResult = show(showPage, pageSize, rowSet);
-//					listBean.setPresentPageResult(presentPageResult);
-//				}
-//			}
-//			else if(PageOperation.equals("上一页")) {
-//				showPage--;
-//				if(showPage < listBean.getPageAllCount())
-//					showPage = 1;
-//				listBean.setShowPage(showPage);
-//				CachedRowSetImpl rowSet = listBean.getRowSet();
-//				if(rowSet != null){
-//					presentPageResult = show(showPage, pageSize, rowSet);
-//					listBean.setPresentPageResult(presentPageResult);
-//				}
-//			}
 			forward = "list.jsp";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
 	}
-//	public StringBuffer show(int page, int pageSize, CachedRowSetImpl rowSet) {
-//		StringBuffer str = new StringBuffer();
-//		try {
-//			rowSet.absolute((page - 1) * pageSize + 1);
-//			for(int i = 1; i <= pageSize; i++) {
-//
-//				str.append("<tr id=\"t"+i+"\">");
-//				for(int j = 1; j <= fieldCount; j++){
-//					if(j == 5 || j == 6)continue;
-//					str.append("<td>"+rowSet.getString(j)+"</td>");
-//				}
-//				str.append("<td><a onclick=\"modify('t"+i+"')\">修改</a></td></tr>");
-//				rowSet.next();
-//			}
-//		} catch(SQLException e) {
-//		}
-//		return str;
-//	}
-
 
 }

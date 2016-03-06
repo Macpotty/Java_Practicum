@@ -93,17 +93,17 @@
                         </div>
                     </div> <a class="left carousel-control" href="#carousel-217363" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-217363" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
-                <form class="form-horizontal jumbotron" action="ShowPlanServlet" method="post" role="form">
+                <form class="form-horizontal jumbotron" action="AddPlan" method="post" role="form">
                     <h2 class="centerText"><b>添加新的读书计划</b></h2>
                     <div class="blank-50"></div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" placeholder="开始时间" name="bookName" id="inputEmail3">
+                            <input type="text" class="form-control" placeholder="书名" name="bookName" id="inputEmail3">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" placeholder="书名" name="startTime" id="inputPassword3">
+                            <input type="text" class="form-control" placeholder="开始时间" name="startTime" id="inputPassword3">
                         </div>
                     </div>
                     <div class="form-group">

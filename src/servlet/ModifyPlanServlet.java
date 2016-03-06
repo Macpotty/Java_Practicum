@@ -54,7 +54,7 @@ public class ModifyPlanServlet extends HttpServlet {
 		
 		try{
 			CtlSql db = new CtlSql();
-			String sql = "INSERT INTO plan(book_name,plan_time,status,user_id) VALUES('"+bookName+"','"+startTime+"','"+status+"','"+userID+"')";
+			String sql = "INSERT INTO plan(book_name,plan_time,status,user_id,thoughts) VALUES('"+bookName+"','"+startTime+"','"+status+"','"+userID+"','"+thoughts+"')";
 			db.update(sql);
 			showInfo = "添加成功！";
 			forward = "MyPlan";

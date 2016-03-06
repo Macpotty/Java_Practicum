@@ -117,38 +117,6 @@ public class ShowPlanServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-//            String PageOperation = request.getParameter("PageOperation");
-//            if(PageOperation == null || PageOperation.length() == 0){
-//                showPage = 1;
-//                listBean.setShowPage(showPage);
-//                CachedRowSetImpl rowSet = listBean.getRowSet();
-//                if(rowSet != null){
-//                    presentPageResult = show(showPage, pageSize, rowSet);
-//                    listBean.setPresentPageResult(presentPageResult);
-//                }
-//            }
-//            else if(PageOperation.equals("下一页")) {
-//                showPage++;
-//                if(showPage > listBean.getPageAllCount())
-//                    showPage = listBean.getPageAllCount();
-//                listBean.setShowPage(showPage);
-//                CachedRowSetImpl rowSet = listBean.getRowSet();
-//                if(rowSet != null){
-//                    presentPageResult = show(showPage, pageSize, rowSet);
-//                    listBean.setPresentPageResult(presentPageResult);
-//                }
-//            }
-//            else if(PageOperation.equals("上一页")) {
-//                showPage--;
-//                if(showPage < listBean.getPageAllCount())
-//                    showPage = 1;
-//                listBean.setShowPage(showPage);
-//                CachedRowSetImpl rowSet = listBean.getRowSet();
-//                if(rowSet != null){
-//                    presentPageResult = show(showPage, pageSize, rowSet);
-//                    listBean.setPresentPageResult(presentPageResult);
-//                }
-//            }
             forward = "plan.jsp";
         }
         RequestDispatcher rd = request.getRequestDispatcher(forward);

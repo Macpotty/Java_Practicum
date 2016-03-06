@@ -57,12 +57,12 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="password" class="form-control" placeholder="输入新密码" name="newPassword" id="input1">
+                            <input type="password" class="form-control" placeholder="输入新密码" name="newPassword" id="input3">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <input type="password" class="form-control" placeholder="重复新密码" id="input2">
+                            <input type="password" class="form-control" placeholder="重复新密码" id="input4">
                         </div>
                     </div>
                     <div class="blank-20"></div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" onClick="check();" class="btn btn-sccess btn-full">
+                            <button type="submit" onClick="check2();" class="btn btn-sccess btn-full">
                                 提交
                             </button>
                         </div>

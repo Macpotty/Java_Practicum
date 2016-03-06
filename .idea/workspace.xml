@@ -3,10 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="322f165e-21c5-4cc4-b011-aec7dc41baf2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/js/scripts.js" afterPath="$PROJECT_DIR$/WebContent/js/scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/bookcook_Web_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/bookcook_Web_exploded/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/modifyPasswd.jsp" afterPath="$PROJECT_DIR$/WebContent/modifyPasswd.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/modifyPlan.jsp" afterPath="$PROJECT_DIR$/WebContent/modifyPlan.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/register.jsp" afterPath="$PROJECT_DIR$/WebContent/register.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/bookcook_Web_exploded/js/scripts.js" afterPath="$PROJECT_DIR$/out/artifacts/bookcook_Web_exploded/js/scripts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/bookcook_Web_exploded/modifyPlan.jsp" afterPath="$PROJECT_DIR$/out/artifacts/bookcook_Web_exploded/modifyPlan.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servlet/ModifyPlanServlet.java" afterPath="$PROJECT_DIR$/src/servlet/ModifyPlanServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servlet/ShowListServlet.java" afterPath="$PROJECT_DIR$/src/servlet/ShowListServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servlet/ShowPlanServlet.java" afterPath="$PROJECT_DIR$/src/servlet/ShowPlanServlet.java" />
     </list>
     <ignored path="bookcook.iws" />
@@ -30,11 +34,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.278157">
-              <caret line="89" column="50" selection-start-line="89" selection-start-column="50" selection-end-line="89" selection-end-column="50" />
+            <state vertical-scroll-proportion="-18.125">
+              <caret line="65" column="29" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModifyPlanServlet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/servlet/ModifyPlanServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.75409836">
+              <caret line="56" column="86" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -107,10 +121,10 @@
         <entry file="file://$PROJECT_DIR$/src/servlet/ShowListServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="142" column="82" selection-start-line="142" selection-start-column="82" selection-end-line="143" selection-end-column="131" />
+              <caret line="162" column="5" selection-start-line="162" selection-start-column="5" selection-end-line="162" selection-end-column="5" />
               <folding>
-                <marker date="1457236542723" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
-                <marker date="1457236542723" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
+                <marker date="1457243883608" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
+                <marker date="1457243883608" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
               </folding>
             </state>
           </provider>
@@ -120,11 +134,11 @@
         <entry file="file://$PROJECT_DIR$/src/servlet/ShowPlanServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="169" column="73" selection-start-line="169" selection-start-column="68" selection-end-line="169" selection-end-column="73" />
+              <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1457243579608" expanded="true" signature="3657:3711" placeholder="SELECT * FRO... missingValue" />
-                <marker date="1457243579608" expanded="true" signature="3789:3843" placeholder="SELECT * FRO... missingValue" />
+                <marker date="1457243895956" expanded="true" signature="3657:3711" placeholder="SELECT * FRO... missingValue" />
+                <marker date="1457243895956" expanded="true" signature="3789:3843" placeholder="SELECT * FRO... missingValue" />
               </folding>
             </state>
           </provider>
@@ -157,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/servlet/RegisterServlet.java" />
         <option value="$PROJECT_DIR$/src/servlet/LogoutServlet.java" />
         <option value="$PROJECT_DIR$/src/servlet/ModifyPasswdServlet.java" />
-        <option value="$PROJECT_DIR$/src/servlet/ModifyPlanServlet.java" />
         <option value="$PROJECT_DIR$/src/servlet/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/servlet/ModifyAccountServlet.java" />
         <option value="$PROJECT_DIR$/src/bean/ListInfoBean.java" />
@@ -165,10 +178,11 @@
         <option value="$PROJECT_DIR$/src/servlet/ModifyListItemServlet.java" />
         <option value="$PROJECT_DIR$/src/servlet/ModifyPlanItemServlet.java" />
         <option value="$PROJECT_DIR$/src/servlet/DeleteListItemServlet.java" />
-        <option value="$PROJECT_DIR$/src/servlet/ShowListServlet.java" />
         <option value="$PROJECT_DIR$/src/servlet/DeletePlanItemServlet.java" />
-        <option value="$PROJECT_DIR$/src/servlet/ShowPlanServlet.java" />
         <option value="$PROJECT_DIR$/WebContent/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/servlet/ShowListServlet.java" />
+        <option value="$PROJECT_DIR$/src/servlet/ShowPlanServlet.java" />
+        <option value="$PROJECT_DIR$/src/servlet/ModifyPlanServlet.java" />
       </list>
     </option>
   </component>
@@ -872,16 +886,16 @@
       <workItem from="1457191765407" duration="3964000" />
       <workItem from="1457204940302" duration="3531000" />
       <workItem from="1457224573862" duration="5992000" />
-      <workItem from="1457238860022" duration="4976000" />
+      <workItem from="1457238860022" duration="6614000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69375000" />
+    <option name="totallyTimeSpent" value="71013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -895,7 +909,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33053514" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18177083" sideWeight="0.60658306" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18177083" sideWeight="0.60658306" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.39341694" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -984,8 +998,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1457243579608" expanded="true" signature="3657:3711" placeholder="SELECT * FRO... missingValue" />
-            <marker date="1457243579608" expanded="true" signature="3789:3843" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243895956" expanded="true" signature="3657:3711" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243895956" expanded="true" signature="3789:3843" placeholder="SELECT * FRO... missingValue" />
           </folding>
         </state>
       </provider>
@@ -995,8 +1009,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="165" column="33" selection-start-line="165" selection-start-column="33" selection-end-line="165" selection-end-column="33" />
           <folding>
-            <marker date="1457236542723" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
-            <marker date="1457236542723" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243883608" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243883608" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1067,8 +1081,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1457236542723" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
-            <marker date="1457236542723" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243883608" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243883608" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1220,14 +1234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/ModifyPlanServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="29" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/modifyAccount.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1293,14 +1299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/ModifyListServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bean/ShowListBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1324,17 +1322,6 @@
           <folding>
             <element signature="e#992#993#0" expanded="true" />
             <element signature="e#1012#1013#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlet/ShowListServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="142" column="82" selection-start-line="142" selection-start-column="82" selection-end-line="143" selection-end-column="131" />
-          <folding>
-            <marker date="1457236542723" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
-            <marker date="1457236542723" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1363,22 +1350,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/ModifyListServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/ShowListServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="162" column="5" selection-start-line="162" selection-start-column="5" selection-end-line="162" selection-end-column="5" />
+          <folding>
+            <marker date="1457243883608" expanded="true" signature="3569:3623" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243883608" expanded="true" signature="3701:3755" placeholder="SELECT * FRO... missingValue" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/servlet/ShowPlanServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="73" selection-start-line="169" selection-start-column="68" selection-end-line="169" selection-end-column="73" />
+          <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1457243579608" expanded="true" signature="3657:3711" placeholder="SELECT * FRO... missingValue" />
-            <marker date="1457243579608" expanded="true" signature="3789:3843" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243895956" expanded="true" signature="3657:3711" placeholder="SELECT * FRO... missingValue" />
+            <marker date="1457243895956" expanded="true" signature="3789:3843" placeholder="SELECT * FRO... missingValue" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.278157">
-          <caret line="89" column="50" selection-start-line="89" selection-start-column="50" selection-end-line="89" selection-end-column="50" />
+        <state vertical-scroll-proportion="-18.125">
+          <caret line="65" column="29" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlet/ModifyPlanServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75409836">
+          <caret line="56" column="86" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
           <folding />
         </state>
       </provider>
