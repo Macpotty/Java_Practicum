@@ -162,10 +162,14 @@ public class ShowPlanServlet extends HttpServlet {
             for(int i = 1; i <= pageSize; i++) {
                 str.append("\n" +
                         "                    <div class=\"panel-group\" id=\"panel-1\">\n" +
+                        "                        <form action=\"DeletePlanItem\" id=\"p"+i+"d\" onsubmit=\"get_pid('p"+i+"')\" class=\"form-inline\">\n" +
+                        "                            <input form=\"p"+i+"d\" id=\"p"+i+"i\" type=\"hidden\" name=\"ID\" value=\"\">\n" +
+                        "                        </form>\n" +
                         "                        <div class=\"panel panel-default\" id=\"p"+i+"\">\n" +
                         "                            <div class=\"panel-heading\">\n" +
                         "                                <a class=\"panel-title\" data-toggle=\"collapse\" data-parent=\"#panel-1\" href=\"#panel-element-"+i+"\">"+rowSet.getString(2)+"</a>\n" +
                         "                                <a class=\"btn-right\" onclick=\"modifyplan('p"+i+"')\">修改</a>\n" +
+                        "                                <input form=\"p"+i+"d\" type=\"submit\" value=\"删除\" class=\"btn btn-link\"></td></tr>\n" +
                         "                            </div>\n" +
                         "                            <div id=\"panel-element-"+i+"\" class=\"panel-collapse collapse in\">\n" +
                         "                                <div class=\"panel-body\">\n" +

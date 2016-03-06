@@ -105,4 +105,12 @@
         <servlet-name>deleteListItem</servlet-name>
         <url-pattern>/DeleteListItem</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>deletePlanItem</servlet-name>
+        <servlet-class>servlet.DeletePlanItemServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deletePlanItem</servlet-name>
+        <url-pattern>/DeletePlanItem</url-pattern>
+    </servlet-mapping>
 </web-app>

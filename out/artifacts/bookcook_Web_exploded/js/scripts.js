@@ -28,13 +28,13 @@ function modify(ida) { //web display control function
     field4 = $(id).children("td").eq(3);
     field5 = $(id).children("td").eq(4);
 
-    $(id).html("<form id=\""+ida+"f\" class=\"form-inline\" action=\"ModifyListItem\" method=\"post\" role=\"form\"><td><input style=\"display:none;\" form=\""+ida+"f\" type=\"text\" name=\"ID\" class=\"form-modify\" value=\""+field1.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"bookName\" class=\"form-modify\" value=\""+field2.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"bookAuthor\" class=\"form-modify\" value=\""+field3.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"bookClass\" class=\"form-modify\" value=\""+field4.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"status\" class=\"form-modify\" value=\""+field5.text()+"\"></td><td><a onclick=\"undo('"+ida+"')\">撤销</a><input form=\""+ida+"f\" type=\"submit\" value=\"提交\" class=\"btn btn-link\"></td></form>");
+    $(id).html("<form id=\""+ida+"f\" class=\"form-inline\" action=\"ModifyListItem\" method=\"post\" role=\"form\"><td style=\"display:none;\"><input style=\"display:none;\" form=\""+ida+"f\" type=\"text\" name=\"ID\" class=\"form-modify\" value=\""+field1.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"bookName\" class=\"form-modify\" value=\""+field2.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"bookAuthor\" class=\"form-modify\" value=\""+field3.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"bookClass\" class=\"form-modify\" value=\""+field4.text()+"\"></td><td><input form=\""+ida+"f\" type=\"text\" name=\"status\" class=\"form-modify\" value=\""+field5.text()+"\"></td><td><a onclick=\"undo('"+ida+"')\">撤销</a><input form=\""+ida+"f\" type=\"submit\" value=\"提交\" class=\"btn btn-link\"></td></form>");
 
 }
 
 function undo(ida) {
     id = "#" + ida;
-    $(id).html("<td style=\"display:none;\">"+field1.text()+"</td><td>"+field2.text()+"</td><td>"+field3.text()+"</td><td>"+field4.text()+"</td><td>"+field5.text()+"</td><td><a onclick=\"modify('"+ida+"')\">修改</a></td>")
+    $(id).html("<form action=\"DeleteListItem\" id=\"t"+ida+"d\" onsubmit=\"get_lid('t"+ida+"')\" class=\"form-inline\"><input form=\"t"+ida+"d\" id=\"t"+ida+"i\" type=\"hidden\" name=\"ID\" value=\"\"></form><td style=\"display:none;\">"+field1.text()+"</td><td>"+field2.text()+"</td><td>"+field3.text()+"</td><td>"+field4.text()+"</td><td>"+field5.text()+"</td><td><a onclick=\"modify('"+ida+"')\">修改</a><input form=\"t"+ida+"d\" type=\"submit\" value=\"删除\" class=\"btn btn-link\"></td>");
 }
 
 function modifyplan(ida) { //web display control function
@@ -64,6 +64,7 @@ function get_lid(ida){
 
 function get_pid(ida){
     id = "#" + ida;
-    field1 = $(id).children("td").eq(0);
+    field0 = $(id).children("div").eq(1).children("div").children("dl").children("dd").eq(3);
+    alert(field0.text());
     $(id+"i").val(field0.text());
 }
