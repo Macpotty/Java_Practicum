@@ -1,13 +1,13 @@
 package bean;
 
 public class ListInfoBean {
-	private int id;
-	private String bookName;
-	private String bookAuthor;
-	private String bookType;
-	private String status;
-	private String showInfo;
-	private int userID;
+	protected int id;
+	protected String bookName;
+	protected String bookAuthor;
+	protected String bookType;
+	protected String status;
+	protected String showInfo;
+	protected int userID;
 
 	public int getId() {
 		return id;

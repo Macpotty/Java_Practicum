@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-sccess btn-full">
+                            <button type="submit" onClick="check();" class="btn btn-sccess btn-full">
                                 提交
                             </button>
                         </div>

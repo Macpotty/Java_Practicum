@@ -98,15 +98,21 @@ public class ShowPlanServlet extends HttpServlet {
                 Statement sql = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
                 ResultSet rs = sql.executeQuery("SELECT * FROM "+tableName+" WHERE user_id='"+userID+"'");
-                rowSet = new CachedRowSetImpl();
-                rowSet.populate(rs);
-                con.close();
-                listBean.setRowSet(rowSet);
-                rowSet.last();
-                int row = rowSet.getRow();
-                int pageAllCount = ((row % pageSize) == 0) ? (row / pageSize) :(row / pageSize + 1);
-                listBean.setPageAllCount(pageAllCount);
-                presentPageResult = show(showPage, pageSize, rowSet);
+                if(rs.next()){
+                    rs = sql.executeQuery("SELECT * FROM "+tableName+" WHERE user_id='"+userID+"'");
+                    rowSet = new CachedRowSetImpl();
+                    rowSet.populate(rs);
+                    con.close();
+                    listBean.setRowSet(rowSet);
+                    rowSet.last();
+                    int row = rowSet.getRow();
+                    int pageAllCount = ((row % pageSize) == 0) ? (row / pageSize) : (row / pageSize + 1);
+                    listBean.setPageAllCount(pageAllCount);
+                    presentPageResult = show(showPage, pageSize, rowSet);
+                }
+                else {
+                    presentPageResult = new StringBuffer("");
+                }
                 listBean.setPresentPageResult(presentPageResult);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -156,9 +162,10 @@ public class ShowPlanServlet extends HttpServlet {
             for(int i = 1; i <= pageSize; i++) {
                 str.append("\n" +
                         "                    <div class=\"panel-group\" id=\"panel-1\">\n" +
-                        "                        <div class=\"panel panel-default\">\n" +
+                        "                        <div class=\"panel panel-default\" id=\"p"+i+"\">\n" +
                         "                            <div class=\"panel-heading\">\n" +
                         "                                <a class=\"panel-title\" data-toggle=\"collapse\" data-parent=\"#panel-1\" href=\"#panel-element-"+i+"\">"+rowSet.getString(2)+"</a>\n" +
+                        "                                <a class=\"btn-right\" onclick=\"modifyplan('p"+i+"')\">修改</a>\n" +
                         "                            </div>\n" +
                         "                            <div id=\"panel-element-"+i+"\" class=\"panel-collapse collapse in\">\n" +
                         "                                <div class=\"panel-body\">\n" +
@@ -169,7 +176,7 @@ public class ShowPlanServlet extends HttpServlet {
                 str.append("                                     <dd>"+rowSet.getString(4)+"</dd>");
                 str.append("                                     <dt>"+"感想"+"</dt>");
                 str.append("                                     <dd>"+rowSet.getString(6)+"</dd>");
-                str.append("\n" +
+                str.append("                                     <dt style=\"display:none;\">ID</dt><dd style=\"display:none;\">"+rowSet.getString(1)+"</dd>\n" +
                         "                                    </dl>\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +

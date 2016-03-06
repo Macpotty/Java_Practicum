@@ -117,16 +117,42 @@ public class ShowListServlet extends HttpServlet {
 				Statement sql = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
 
 				ResultSet rs = sql.executeQuery("SELECT * FROM "+tableName+" WHERE user_id='"+userID+"'");
-				rowSet = new CachedRowSetImpl();
-				rowSet.populate(rs);
-				con.close();
-				listBean.setRowSet(rowSet);
-				rowSet.last();
-				int row = rowSet.getRow();
-				int pageAllCount = ((row % pageSize) == 0) ? (row / pageSize) :(row / pageSize + 1);
-				listBean.setPageAllCount(pageAllCount);
-				presentPageResult = show(showPage, pageSize, rowSet);
-				listBean.setPresentPageResult(presentPageResult);
+                if(rs.next()){
+                    rs = sql.executeQuery("SELECT * FROM "+tableName+" WHERE user_id='"+userID+"'");
+                    rowSet = new CachedRowSetImpl();
+                    rowSet.populate(rs);
+                    con.close();
+                    listBean.setRowSet(rowSet);
+                    rowSet.last();
+                    int row = rowSet.getRow();
+                    int pageAllCount = ((row % pageSize) == 0) ? (row / pageSize) : (row / pageSize + 1);
+                    listBean.setPageAllCount(pageAllCount);
+
+					StringBuffer str = new StringBuffer();
+					try {
+						rowSet.absolute((showPage - 1) * pageSize + 1);
+						for(int i = 1; i <= pageSize; i++) {
+							str.append("<tr id=\"t"+i+"\">\n" +
+									   "    <form action=\"DeleteListItem\" id=\"t"+i+"d\" onsubmit=\"get_lid('t"+i+"')\" class=\"form-inline\">\n" +
+									   "        <input form=\"t"+i+"d\" id=\"t"+i+"i\" type=\"hidden\" name=\"ID\" value=\"\">\n" +
+									   "    </form><td style=\"display:none;\">"+rowSet.getString(1)+"</td>");
+							for(int j = 2; j <= fieldCount; j++){
+								if(j == 5 || j == 6)continue;
+								str.append("<td>"+rowSet.getString(j)+"</td>");
+							}
+							str.append("<td><a onclick=\"modify('t"+i+"')\">修改</a>\n" +
+									   "    <input form=\"t"+i+"d\" type=\"submit\" value=\"删除\" class=\"btn btn-link\"></td></tr>");
+							rowSet.next();
+						}
+					} catch(SQLException e) {
+					}
+
+					presentPageResult = str;
+                }
+                else {
+                    presentPageResult = new StringBuffer("");
+                }
+                listBean.setPresentPageResult(presentPageResult);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -167,23 +193,24 @@ public class ShowListServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
 	}
-	public StringBuffer show(int page, int pageSize, CachedRowSetImpl rowSet) {
-		StringBuffer str = new StringBuffer();
-		try {
-			rowSet.absolute((page - 1) * pageSize + 1);
-			for(int i = 1; i <= pageSize; i++) {
-				str.append("<tbody>");
-				for(int j = 2; j <= fieldCount; j++){
-					if(j == 5 || j == 6)continue;
-					str.append("<td>"+rowSet.getString(j)+"</td>");
-				}
-				str.append("</tbody>");
-				rowSet.next();
-			}
-		} catch(SQLException e) {
-		}
-		return str;
-	}
+//	public StringBuffer show(int page, int pageSize, CachedRowSetImpl rowSet) {
+//		StringBuffer str = new StringBuffer();
+//		try {
+//			rowSet.absolute((page - 1) * pageSize + 1);
+//			for(int i = 1; i <= pageSize; i++) {
+//
+//				str.append("<tr id=\"t"+i+"\">");
+//				for(int j = 1; j <= fieldCount; j++){
+//					if(j == 5 || j == 6)continue;
+//					str.append("<td>"+rowSet.getString(j)+"</td>");
+//				}
+//				str.append("<td><a onclick=\"modify('t"+i+"')\">修改</a></td></tr>");
+//				rowSet.next();
+//			}
+//		} catch(SQLException e) {
+//		}
+//		return str;
+//	}
 
 
 }

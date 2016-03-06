@@ -7,6 +7,7 @@ public class ShowListBean {
 	protected int pageSize = 8;
 	protected int pageAllCount = 0;
 	protected int showPage = 1;
+	protected int id;
 	protected StringBuffer presentPageResult;
 	protected String databaseName = "booklist";
 	protected String tableName = "";
@@ -16,6 +17,12 @@ public class ShowListBean {
 	}
 	public CachedRowSetImpl getRowSet(){
 		return rowSet;
+	}
+	public void setId(int id){
+		this.id = id;
+	}
+	public int getId(){
+		return id;
 	}
 	public void setPageSize(int size){
 		pageSize = size;

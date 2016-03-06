@@ -79,7 +79,7 @@
                     <div class="blank-20"></div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-primary btn-full">
+                            <button type="submit" onClick="check();" class="btn btn-primary btn-full">
                                 确认创建用户
                             </button>
                         </div>

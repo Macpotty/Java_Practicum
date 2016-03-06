@@ -50,6 +50,7 @@
                     <h2><b>我的读书计划</b>
                     <a class="btn btn-primary btn-right" href="modifyPlan.jsp">添加</a></h2>
                     <jsp:getProperty name="plan" property="presentPageResult"/>
+                    <% if(plan.getRowSet() == null)out.print("</br><h2><em>  你还没有读书计划......<em></h2>"); %>
                     <ul class="pagination">
                         <li>
                             <form action="MyPlan" class="form-inline btn-left" method="post">

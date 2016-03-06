@@ -52,6 +52,9 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <th style="display:none;">
+                                    ID
+                                </th>
                                 <th>
                                     书名
                                 </th>
@@ -64,10 +67,15 @@
                                 <th>
                                     状态
                                 </th>
+                                <th>
+                                </th>
                             </tr>
                         </thead>
-                        <jsp:getProperty name="list" property="presentPageResult"/>
+                        <tbody>
+                            <jsp:getProperty name="list" property="presentPageResult"/>
+                        </tbody>
                     </table>
+                    <% if(list.getRowSet() == null)out.print("</br><h2><em>  你的书单空空如也......<em></h2>"); %>
                     <ul class="pagination">
                         <li>
                             <form action="MyList" class="form-inline btn-left" method="post">
